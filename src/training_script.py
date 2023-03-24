@@ -27,5 +27,9 @@ class Classifier:
         with open(self.pkl_file_path, 'wb') as file:
             pickle.dump(model, file)
 
-    def predict(self):
-        pass
+    def predict(self, df_test, model_path:str):
+        with open(model_path, 'rb') as file:
+            model = pickle.load(file)
+
+        # Use the loaded model to make predictions
+        return model.predict(df_test)
